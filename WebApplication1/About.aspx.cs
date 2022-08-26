@@ -19,9 +19,10 @@ namespace WebApplication1
             //Lesson_1();
             //Lesson_2();
             Lesson_3();
-            Lesson_4();
+            //Lesson_4();
         }
 
+        #region hide
         protected void Lesson_1()
         {
             
@@ -172,6 +173,7 @@ namespace WebApplication1
             Age_1.Text = text3.ToString();
         }
 
+        #endregion
 
         protected void Lesson_3()
         {
@@ -179,9 +181,9 @@ namespace WebApplication1
             StringBuilder text2 = new StringBuilder();
             StringBuilder text3 = new StringBuilder();
 
-            var count = ;
+            string IC = txtIC.Text.ToString().Replace(" ", "").Replace("555", "5").Replace("5555", "5").Replace("55555", "5").Replace("555555", "5").Replace("5555555", "5").Replace("55555555", "5").Replace("555555555", "5").Replace("55555555555", "5").Replace("555555555555", "5").Replace("5555555555555", "5");
 
-            string IC = txtIC.ToString().Replace("159", "19x19").Replace("951", "91x91").Replace("15951", "19x191x91").Replace("95159", "91x919x19");
+            IC = IC.ToString().Replace("159", "19x19").Replace("951", "91x91").Replace("15951", "19x191x91").Replace("95159", "91x919x19");
 
             //string IC = txtIC.Text.Replace(" ", "").Replace("159", "19x19").Replace("951", "91x91").Replace("15951", "19x191x91").Replace("95159", "91x919x19");
             string[] ch = new string[IC.Length];
@@ -391,10 +393,6 @@ namespace WebApplication1
                 }
 
                 i += 3;
-                //if (king.Contains("160") || king.Contains("161") || king.Contains("165") || king.Contains("166") ||
-                //    king.Contains("610") || king.Contains("611") || king.Contains("615") || king.Contains("616"))
-                //{
-                //}
             }
 
             No_4.Text = text1.ToString();

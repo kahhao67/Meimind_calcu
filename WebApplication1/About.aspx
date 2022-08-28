@@ -4,6 +4,11 @@
     <section>
             <div class="form-group divtopinfo mb-0">
                 <div class="col-md-12">
+                    <div class="col-md-12" id="divmessage" runat="server" visible="false">
+                        <span style="color:red;">
+                            <asp:Label ID="txtmessage" runat="server"></asp:Label>
+                        </span>
+                    </div>
                     <div class="row cards">
                         <div class="form-group col-md-12">
                             <label><%= GetGlobalResourceObject("resource", "Member_IC")%></label>
@@ -21,34 +26,7 @@
                             <tr>
                                 <th colspan="2">Answer</th>
                             </tr>
-                            <tr>
-                                <td>IC:</td>
-                                <td><asp:Label ID="Name" runat="server" /></td>
-                            </tr>
-                            <tr>
-                                <td>Name:</td>
-                                <td><asp:Label ID="Age" runat="server" /></td>
-                            </tr>
-
-                            <tr>
-                                <th colspan="2">Lesson 2</th>
-                            </tr>
-                            <tr>
-                                <td>IC:</td>
-                                <td><asp:Label ID="IC_1" runat="server" /></td>
-                            </tr>
-                            <tr>
-                                <td>Name:</td>
-                                <td><asp:Label ID="Name_1" runat="server" /></td>
-                            </tr>
-                            <tr>
-                                <td>Age:</td>
-                                <td><asp:Label ID="Age_1" runat="server" /></td>
-                            </tr>
-
-                             <tr>
-                                <th colspan="2">Lesson 3</th>
-                            </tr>
+                           
                             <tr>
                                 <td>IC:</td>
                                 <td><asp:Label ID="IC_3" runat="server" /></td>
@@ -63,15 +41,26 @@
                             </tr>
 
                              <tr>
-                                <th colspan="2">The Thousand King Series</th>
+                                <th colspan="2">Thousand King Series</th>
+                            </tr>
+                            <tr>
+                                <td>Combination King Series:</td>
+                                <td><asp:Label ID="No_4" runat="server" /></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">Hidden Aura of "0"</th>
+                            </tr>   
+                            <tr>
+                                <td>Hidden Aure Value:</td>
+                                <td><asp:Label ID="Value_1" runat="server" /></td>
                             </tr>
                             <tr>
                                 <td>IC:</td>
-                                <td><asp:Label ID="IC_4" runat="server" /></td>
+                                <td><asp:Label ID="Value_2" runat="server" /></td>
                             </tr>
                             <tr>
-                                <td>Combination of King Series:</td>
-                                <td><asp:Label ID="No_4" runat="server" /></td>
+                                <td>Name:</td>
+                                <td><asp:Label ID="Value_3" runat="server" /></td>
                             </tr>
                         </tbody>
                     </table>

@@ -16,162 +16,177 @@ namespace WebApplication1
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            //Lesson_1();
-            //Lesson_2();
-            Lesson_3();
-            //Lesson_4();
+            StringBuilder sbError = new StringBuilder();
+
+            string IC = txtIC.Text.ToString().Replace(" ", "").Replace("-", "");
+            if (IC.Length > 12)
+            {
+                sbError.Clear();
+                sbError.Append("IC number must be 12 digits only.");
+                divmessage.Visible = txtmessage.Visible = true;
+                txtmessage.Text = sbError.ToString();
+            }
+            else
+            {
+                divmessage.Visible = txtmessage.Visible = false;
+                //Lesson_1();
+                //Lesson_2();
+                Lesson_3();
+                Lesson_4();
+                Lesson_5();
+            }
         }
 
         #region hide
-        protected void Lesson_1()
-        {
+        //protected void Lesson_1()
+        //{
             
-            StringBuilder text1 = new StringBuilder();
-            StringBuilder text2 = new StringBuilder();
+        //    StringBuilder text1 = new StringBuilder();
+        //    StringBuilder text2 = new StringBuilder();
 
-            string IC = txtIC.Text;
+        //    string IC = txtIC.Text;
 
-            string[] ch = new string[IC.Length];
-            string[] name = new string[IC.Length];
+        //    string[] ch = new string[IC.Length];
+        //    string[] name = new string[IC.Length];
 
-            for (int i = 0; i < IC.Length; i++)
-            {
-                ch[i] = IC[i].ToString();
-            }
+        //    for (int i = 0; i < IC.Length; i++)
+        //    {
+        //        ch[i] = IC[i].ToString();
+        //    }
 
-            for (int i = 0; i < IC.Length - 1; i++)
-            {
-                string front = ch[i].ToString();
-                string back = ch[i + 1].ToString();
+        //    for (int i = 0; i < IC.Length - 1; i++)
+        //    {
+        //        string front = ch[i].ToString();
+        //        string back = ch[i + 1].ToString();
 
-                if (front == "0")
-                {
-                    front = ch[i + 1].ToString();
-                }
-                if (back == "0")
-                {
-                    back = ch[i].ToString();
-                }
-                string comb = front + back;
+        //        if (front == "0")
+        //        {
+        //            front = ch[i + 1].ToString();
+        //        }
+        //        if (back == "0")
+        //        {
+        //            back = ch[i].ToString();
+        //        }
+        //        string comb = front + back;
 
-                text1.Append(comb);
-                text1.Append(" ");
+        //        text1.Append(comb);
+        //        text1.Append(" ");
 
-                string value = Dict_1(comb);
+        //        string value = Dict_1(comb);
 
-                if (value == "D" && i > 0)
-                {
-                    value = value.Replace("D", name[0]);
-                }
-                else
-                {
-                    name[0] = value;
-                }
+        //        if (value == "D" && i > 0)
+        //        {
+        //            value = value.Replace("D", name[0]);
+        //        }
+        //        else
+        //        {
+        //            name[0] = value;
+        //        }
 
-                string value_1 = Dict_2(value);
+        //        string value_1 = Dict_2(value);
 
-                text2.Append(value_1);
-                text2.Append(" ");
-            }
+        //        text2.Append(value_1);
+        //        text2.Append(" ");
+        //    }
 
-            Name.Text = text1.ToString();
-            Age.Text = text2.ToString();
-        }
+        //    Name.Text = text1.ToString();
+        //    Age.Text = text2.ToString();
+        //}
 
 
-        protected void Lesson_2()
-        {
-            StringBuilder text1 = new StringBuilder();
-            StringBuilder text2 = new StringBuilder();
-            StringBuilder text3 = new StringBuilder();
+        //protected void Lesson_2()
+        //{
+        //    StringBuilder text1 = new StringBuilder();
+        //    StringBuilder text2 = new StringBuilder();
+        //    StringBuilder text3 = new StringBuilder();
 
-            string IC = txtIC.Text.Trim();
-            string[] ch = new string[IC.Length];
-            string[] name = new string[IC.Length];
+        //    string IC = txtIC.Text.Trim();
+        //    string[] ch = new string[IC.Length];
+        //    string[] name = new string[IC.Length];
 
-            string value = "";
+        //    string value = "";
 
-            int age_value = 13;
+        //    int age_value = 13;
 
-            for (int i = 0; i < IC.Length; i++)
-            {
-                ch[i] = IC[i].ToString();
-            }
-            for (int i = 0; i < IC.Length - 1; i++)
-            {
-                string front = ch[i].ToString();
-                string back = ch[i + 1].ToString();
-                string mid = "";
+        //    for (int i = 0; i < IC.Length; i++)
+        //    {
+        //        ch[i] = IC[i].ToString();
+        //    }
+        //    for (int i = 0; i < IC.Length - 1; i++)
+        //    {
+        //        string front = ch[i].ToString();
+        //        string back = ch[i + 1].ToString();
+        //        string mid = "";
 
-                if (front == "0" || front == "5")
-                {
-                    if(front == "5")
-                    {
-                        mid = "^";
-                    }
+        //        if (front == "0" || front == "5")
+        //        {
+        //            if(front == "5")
+        //            {
+        //                mid = "^";
+        //            }
 
-                    front = ch[i + 1].ToString();
-                }
+        //            front = ch[i + 1].ToString();
+        //        }
 
-                if (back == "0" || back == "5")
-                {
-                    if(back == "5")
-                    {
-                        if ((i + 2) < IC.Length)
-                        {
-                            back = ch[i + 2].ToString();
-                        }
-                        else
-                        {
-                            mid = "^";
-                            back = ch[i - 1].ToString();
-                        }
+        //        if (back == "0" || back == "5")
+        //        {
+        //            if(back == "5")
+        //            {
+        //                if ((i + 2) < IC.Length)
+        //                {
+        //                    back = ch[i + 2].ToString();
+        //                }
+        //                else
+        //                {
+        //                    mid = "^";
+        //                    back = ch[i - 1].ToString();
+        //                }
 
-                    }
-                    else
-                        back = ch[i].ToString();
-                }
+        //            }
+        //            else
+        //                back = ch[i].ToString();
+        //        }
 
-                string comb = front + back + mid;
+        //        string comb = front + back + mid;
 
-                if(comb.Contains("^"))
-                {
-                    comb = "^";
-                }
-                else
-                {
-                    comb = front + back;
-                }
+        //        if(comb.Contains("^"))
+        //        {
+        //            comb = "^";
+        //        }
+        //        else
+        //        {
+        //            comb = front + back;
+        //        }
 
-                text1.Append(comb);
-                text1.Append("  ");
+        //        text1.Append(comb);
+        //        text1.Append("  ");
  
-                value = Dict_1(comb);
+        //        value = Dict_1(comb);
 
-                if (value == "D" && i > 0)
-                {
-                    value = value.Replace("D", name[0]);
-                }
-                else
-                {
-                    name[0] = value;
-                }
+        //        if (value == "D" && i > 0)
+        //        {
+        //            value = value.Replace("D", name[0]);
+        //        }
+        //        else
+        //        {
+        //            name[0] = value;
+        //        }
 
-                string value_1 = Dict_2(value);
+        //        string value_1 = Dict_2(value);
 
-                text2.Append(value_1);
-                text2.Append("  ");
+        //        text2.Append(value_1);
+        //        text2.Append("  ");
 
-                text3.Append(age_value);
-                text3.Append(" ");
-                age_value = age_value + 5;
-            }
+        //        text3.Append(age_value);
+        //        text3.Append(" ");
+        //        age_value = age_value + 5;
+        //    }
 
 
-            IC_1.Text = text1.ToString();
-            Name_1.Text = text2.ToString();
-            Age_1.Text = text3.ToString();
-        }
+        //    IC_1.Text = text1.ToString();
+        //    Name_1.Text = text2.ToString();
+        //    Age_1.Text = text3.ToString();
+        //}
 
         #endregion
 
@@ -181,11 +196,13 @@ namespace WebApplication1
             StringBuilder text2 = new StringBuilder();
             StringBuilder text3 = new StringBuilder();
 
-            string IC = txtIC.Text.ToString().Replace(" ", "").Replace("555", "5").Replace("5555", "5").Replace("55555", "5").Replace("555555", "5").Replace("5555555", "5").Replace("55555555", "5").Replace("555555555", "5").Replace("55555555555", "5").Replace("555555555555", "5").Replace("5555555555555", "5");
+            string IC = txtIC.Text.ToString().Replace(" ", "").Replace("-", "").Replace("5555555555555", "5").Replace("555555555555", "5")
+                        .Replace("55555555555", "5").Replace("555555555", "5").Replace("55555555", "5").Replace("5555555", "5")
+                        .Replace("555555", "5").Replace("55555", "5").Replace("5555", "5")
+                        .Replace("555", "5").Replace("55", "5");
 
             IC = IC.ToString().Replace("159", "19x19").Replace("951", "91x91").Replace("15951", "19x191x91").Replace("95159", "91x919x19");
 
-            //string IC = txtIC.Text.Replace(" ", "").Replace("159", "19x19").Replace("951", "91x91").Replace("15951", "19x191x91").Replace("95159", "91x919x19");
             string[] ch = new string[IC.Length];
             string[] name = new string[IC.Length];
 
@@ -281,6 +298,10 @@ namespace WebApplication1
                                     else
                                         back = "0";
                                 }
+                                else if(front == "0")
+                                {
+                                    front = back;
+                                }
 
                                 
                             }
@@ -317,9 +338,9 @@ namespace WebApplication1
 
                 value = Dict_1(comb);
 
-                if (value == "D" && i > 0 && comb != "00" && value == "^")
+                if ((value == "D" || value == "^") && i > 0 && comb != "00")
                 {
-                    value = value.Replace("D", name[0]);
+                        value = value.Replace("D", name[0]);
                 }
                 else
                 {
@@ -342,7 +363,10 @@ namespace WebApplication1
         {
             StringBuilder text1 = new StringBuilder();
 
-            string IC = txtIC.Text;
+            string IC = txtIC.Text.ToString().Replace(" ", "").Replace("-", "").Replace("5555555555555", "5").Replace("555555555555", "5")
+                        .Replace("55555555555", "5").Replace("555555555", "5").Replace("55555555", "5").Replace("5555555", "5")
+                        .Replace("555555", "5").Replace("55555", "5").Replace("5555", "5")
+                        .Replace("555", "5").Replace("55", "5");
             string[] ch = new string[IC.Length];
 
             for (int i = 0; i < IC.Length; i++)
@@ -350,54 +374,145 @@ namespace WebApplication1
                 ch[i] = IC[i].ToString();
             }
 
-            for (int i = 0; i < IC.Length; i++)
+            for (int i = 0; i < IC.Length - 1; i++)
             {
-                string word_1 = ch[i].ToString();
-                string word_2 = ch[i + 1].ToString();
-                string word_3 = ch[i + 2].ToString();
-                string king = word_1 + word_2 + word_3;
-
-                switch (king)
+                if (i + 1 < IC.Length && i + 2 < IC.Length)
                 {
-                    case "160":
-                        text1.Append(king);
-                        break;
+                    string word_1 = ch[i].ToString();
+                    string word_2 = ch[i + 1].ToString();
+                    string word_3 = ch[i + 2].ToString();
+                    string king = word_1 + word_2 + word_3;
 
-                    case "161":
-                        text1.Append(king);
-                        break;
+                    if(word_2 == "5" && (word_1 == "1" || word_1 == "6") && (word_3 == "1" || word_3 == "6") && i + 3 < IC.Length)
+                    {
+                        word_2 = ch[i + 2].ToString();
+                        word_3 = ch[i + 3].ToString();
 
-                    case "165":
-                        text1.Append(king);
-                        break;
+                        king = word_1 + word_2 + word_3;
+                    }
 
-                    case "166":
-                        text1.Append(king);
-                        break;
+                    switch (king)
+                    {
+                        case "160":
+                            text1.Append(king);
+                            break;
 
-                    case "610":
-                        text1.Append(king);
-                        break;
+                        case "161":
+                            text1.Append(king);
+                            break;
 
-                    case "611":
-                        text1.Append(king);
-                        break;
+                        case "165":
+                            text1.Append(king);
+                            break;
 
-                    case "615":
-                        text1.Append(king);
-                        break;
+                        case "166":
+                            text1.Append(king);
+                            break;
 
-                    case "616":
-                        text1.Append(king);
-                        break;
+                        case "610":
+                            text1.Append(king);
+                            break;
+
+                        case "611":
+                            text1.Append(king);
+                            break;
+
+                        case "615":
+                            text1.Append(king);
+                            break;
+
+                        case "616":
+                            text1.Append(king);
+                            break;
+                    }
+                    text1.Append(" ");
+
+                    if (text1.ToString() == "160" || text1.ToString() == "161" || text1.ToString() == "165" ||
+                        text1.ToString() == "166" || text1.ToString() == "610" || text1.ToString() == "610" ||
+                        text1.ToString() == "611" || text1.ToString() == "615" || text1.ToString() == "616")
+                    {
+                        i += 3;
+                    }
                 }
 
-                i += 3;
+
             }
 
             No_4.Text = text1.ToString();
 
         }
+
+
+        protected void Lesson_5()
+        {
+            StringBuilder text1 = new StringBuilder();
+            StringBuilder text2 = new StringBuilder();
+            StringBuilder text3 = new StringBuilder();
+
+            string IC = txtIC.Text.ToString().Replace(" ", "").Replace("-", "").Replace("5555555555555", "5").Replace("555555555555", "5")
+            .Replace("55555555555", "5").Replace("555555555", "5").Replace("55555555", "5").Replace("5555555", "5")
+            .Replace("555555", "5").Replace("55555", "5").Replace("5555", "5")
+            .Replace("555", "5").Replace("55", "5");
+
+            IC = IC.ToString().Replace("5", "");
+
+            string[] ch = new string[IC.Length];
+            string[] name = new string[IC.Length];
+
+            string value = "";
+
+            for (int i = 0; i < IC.Length; i++)
+            {
+                ch[i] = IC[i].ToString();
+            }
+
+            for (int i = 0; i < IC.Length - 1; i++)
+            {
+                string comb = "";
+                
+                if (i + 1 < IC.Length && i + 2 < IC.Length)
+                {
+                    string word = "";
+                    string W1 = ch[i].ToString();
+                    string W2 = ch[i + 1].ToString();
+                    string W3 = ch[i + 2].ToString();
+
+                    if(W2 == "0")
+                    {
+                        word = W1 + W2 + W3;
+
+                        comb = W1 + W3;
+
+                        text1.Append(comb);
+                        text1.Append(" ");
+
+                        value = Dict_1(comb);
+
+                        if ((value == "D" || value == "^") && i > 0 && comb != "00")
+                        {
+                            value = value.Replace("D", name[0]);
+                        }
+                        else
+                        {
+                            name[0] = value;
+                        }
+
+                        string value_1 = Dict_2(value);
+
+                        text2.Append(value_1);
+                        text2.Append("  ");
+
+                        text3.Append(word);
+                        text3.Append(" ");
+                    }
+                }
+            }
+
+            Value_1.Text = text3.ToString();
+            Value_2.Text = text1.ToString();
+            Value_3.Text = text2.ToString();
+        }
+
 
         #region Dic
         public static string Dict_1(string key)
